@@ -37,6 +37,10 @@ const postSchema = new mongoose.Schema({
     isAvailable: {
         type: Boolean,
         default: true
+    },
+    shop: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Shop"
     }
 });
 
