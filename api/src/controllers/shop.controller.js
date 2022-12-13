@@ -11,7 +11,7 @@ const shopController = {
     },
     getShopById: async (req, res) => {
         try {
-            const shop = await shopModel.findById(req.params.id)
+            const shop = await shopModel.findById(req.params.id).populate('posts')
             res.send(shop)
         } catch (error) {
             res.status(404).send({message: error.message})

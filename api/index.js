@@ -9,6 +9,7 @@ const bodyParser = require('body-parser')
 const postRoutes = require('./src/routers/post.router')
 const commentRoutes = require('./src/routers/comment.router')
 const bookingRoutes = require('./src/routers/booking.router')
+const shopRoutes = require('./src/routers/shop.router')
 
 connectMongo()
 
@@ -21,6 +22,8 @@ app.use(express.json())
 app.use('/api', postRoutes)
 app.use('/api', commentRoutes)
 app.use('/api', bookingRoutes)
+app.use('/api', shopRoutes)
+
 
 app.listen(port, () => {    
     console.log(`Example app listening at http://localhost:${port}`)
