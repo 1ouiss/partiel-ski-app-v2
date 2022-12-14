@@ -26,7 +26,7 @@ const ShopConnect = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(password);
-        if (password === "admin") {
+        if (password === shop.password) {
             navigate(`/shop/${id}/details`);
         }
     }

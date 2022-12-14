@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {Select, MenuItem, InputLabel, FormControl} from '@mui/material';
+import WeightFilter from "../components/WeightFilter";
+import StyleFilter from "../components/StyleFilter";
+import HeightFilter from "../components/HeightFilter";
 
 const PostList = ({posts}) => {
     const navigate = useNavigate();
@@ -24,8 +27,7 @@ const PostList = ({posts}) => {
 
     }
 
-    const handleChangeWeight = (e) => {
-        const weight = e.target.value
+    const handleChangeWeight = (weight) => {
         setWeight(weight);
         if (weight === 45) {
             const filteredPosts = posts.filter(post => post.weight <= 45)
@@ -40,20 +42,20 @@ const PostList = ({posts}) => {
         setIsSearch(true);
     }
 
-    const handleChangeStyle = (e) => {
-        const style = e.target.value
+    const handleChangeStyle = (style) => {
         setStyle(style);
         const filteredPosts = posts.filter(post => post.style === style)
         setPostsSearch(filteredPosts);
         setIsSearch(true);
     }
-    const handleChangeHeight = (e) => {
-        const height = e.target.value
-        setStyle(height);
+    const handleChangeHeight = (height) => {
+        setHeight(height);
         const filteredPosts = posts.filter(post => post.height === height)
         setPostsSearch(filteredPosts);
         setIsSearch(true);
     }
+
+    
 
     return ( 
         <div>
@@ -61,58 +63,9 @@ const PostList = ({posts}) => {
 
             <input type="text" onChange={(e) => handleSearch(e)} />
 
-            <FormControl sx={{
-                width: "200px"
-            }}>
-                <InputLabel id="demo-simple-select-label">Poids</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    label="Poids"
-                    value={weight}
-                    onChange={(e) => handleChangeWeight(e)}
-                >
-                    <MenuItem value={45}>Ten</MenuItem>
-                    <MenuItem value={46}>Twenty</MenuItem>
-                    <MenuItem value={65}>Thirty</MenuItem>
-                </Select>
-            </FormControl>
-
-            <FormControl sx={{
-                width: "200px"
-            }}>
-                <InputLabel id="demo-simple-select-label">Style</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    label="Style"
-                    value={style}
-                    onChange={(e) => handleChangeStyle(e)}
-                >
-                    <MenuItem value={"Freeride"}>Freeride</MenuItem>
-                    <MenuItem value={"Freestyle"}>Freestyle</MenuItem>
-                    <MenuItem value={"Piste"}>Piste</MenuItem>
-                    <MenuItem value={"Polyvalent"}>Polyalent</MenuItem>
-                </Select>
-            </FormControl>
-
-            <FormControl sx={{
-                width: "200px"
-            }}>
-                <InputLabel id="demo-simple-select-label">Style</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    label="Style"
-                    value={height}
-                    onChange={(e) => handleChangeHeight(e)}
-                >
-                    <MenuItem value={"Freeride"}>Freeride</MenuItem>
-                    <MenuItem value={"Freestyle"}>Freestyle</MenuItem>
-                    <MenuItem value={"Piste"}>Piste</MenuItem>
-                    <MenuItem value={"Polyvalent"}>Polyalent</MenuItem>
-                </Select>
-            </FormControl>
+            <WeightFilter weight={weight} setWeight={handleChangeWeight}/>
+            <StyleFilter style={style} setStyle={handleChangeStyle}/>
+            <HeightFilter height={height} setHeight={handleChangeHeight}/>
 
             <div>
                 {
