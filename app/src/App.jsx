@@ -6,6 +6,8 @@ import DetailPost from './app/pages/DetailPost';
 import { useEffect, useState } from 'react';
 import Shop from './app/pages/Shop';
 import ShopDetails from './app/pages/ShopDetails';
+import ShopConnect from './app/pages/ShopConnect';
+import PostForm from './app/pages/PostForm';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -31,7 +33,10 @@ function App() {
           <Route path="/" element={<PostList posts={posts} />} />
           <Route path='/:id' element={<DetailPost />} />
           <Route path='/shop' element={<Shop />}/>
-          <Route path='/shop/:id' element={<ShopDetails/>}/>
+          <Route path='/shop/:id' element={<ShopConnect/>}/>
+          <Route path='/shop/:id/details' element={<ShopDetails/>}/>
+          <Route path='/createpost/:shopId' element={<PostForm/>}/>
+          <Route path='/editpost/:postId' element={<PostForm/>}/>
         </Routes>
       </MainLayout>
     </BrowserRouter>

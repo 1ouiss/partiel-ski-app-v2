@@ -12,9 +12,15 @@ const getOnePostById = async (id) => {
     return response.data;
 }
 
+const deletePost = async (id) => {
+    const response = await instance.delete(`${endPoint}/${id}`)
+    return response.data;
+}
+
 const postService = {
     getPosts,
-    getOnePostById
+    getOnePostById,
+    deletePost
 }
 
 export default postService;
