@@ -1,12 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import {Select, MenuItem, InputLabel, FormControl} from '@mui/material';
 import WeightFilter from "../components/WeightFilter";
 import StyleFilter from "../components/StyleFilter";
 import HeightFilter from "../components/HeightFilter";
+import PostCard from "../components/PostCard";
 
 const PostList = ({posts}) => {
-    const navigate = useNavigate();
 
     const [postsSearch, setPostsSearch] = useState([]);
     const [isSearch, setIsSearch] = useState(false)
@@ -70,16 +68,10 @@ const PostList = ({posts}) => {
             <div>
                 {
                     isSearch ? postsSearch.map(post => (
-                        <div key={post._id} onClick={() => navigate(`/${post._id}`)}>
-                            <h1>{post.title}</h1>
-                            <p>{post.description}</p>
-                        </div>
+                        <PostCard post={post}/>
                     )) :
                     posts.map(post => (
-                        <div key={post._id} onClick={() => navigate(`/${post._id}`)}>
-                            <h1>{post.title}</h1>
-                            <p>{post.description}</p>
-                        </div>
+                        <PostCard post={post}/>
                     ))
                 }
             </div>
