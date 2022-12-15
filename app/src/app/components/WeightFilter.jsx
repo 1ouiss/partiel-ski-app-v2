@@ -10,8 +10,9 @@ const WeightFilter = ({weight, setWeight}) => {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 label="Poids"
+                name='weight'
                 value={weight}
-                onChange={(e) => setWeight(e.target.value)}
+                onChange={(e) => setWeight(e)}
             >
                 <MenuItem value={45}>moins de 45kg</MenuItem>
                 <MenuItem value={46}>entre 45 et 65kg</MenuItem>

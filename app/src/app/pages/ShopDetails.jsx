@@ -42,8 +42,6 @@ const ShopDetails = () => {
                         <BookingOfShop shop={shop} idShop={id}/>
                     )
             }
-
-            {/* <PostsOfShop posts={shop.posts} idShop={id}/> */}
         </>
     );
 }

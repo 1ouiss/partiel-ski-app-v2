@@ -17,6 +17,11 @@ const deletePost = async (id) => {
     return response.data;
 }
 
+const createPost = async (data) => {
+    const response = await instance.post(`${endPoint}`, data)
+    return response.data;
+}
+
 const postService = {
     getPosts,
     getOnePostById,

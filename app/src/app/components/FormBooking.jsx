@@ -1,3 +1,4 @@
+import { Box, Button, TextField } from "@mui/material";
 import { useState } from "react";
 import bookingService from "../../setup/services/booking.service";
 
@@ -27,10 +28,10 @@ const FormBooking = ({id, fetchPost, shop}) => {
     }
 
     return (
-        <form onSubmit={(e) => handleBooking(e)}>
-            <input type="text" name="telephoneNumber" placeholder="phone number" onChange={(e) => handleChange(e)}/>
-            <button type="submit">Reserver</button>
-        </form>
+        <Box component="form" onSubmit={(e) => handleBooking(e)} sx={{display:"flex", flexDirection: "column", maxWidth: 345, justifyContent: "space-around", height: 150}}>
+            <TextField type="text" name="telephoneNumber" label="phone number" onChange={(e) => handleChange(e)}/>
+            <Button type="submit">Reserver</Button>
+        </Box>
     );
 }
  
