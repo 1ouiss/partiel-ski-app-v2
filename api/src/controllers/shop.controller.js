@@ -25,6 +25,16 @@ const shopController = {
         } catch (error) {
             res.status(400).send({message: error.message})
         }
+    },
+    update: async (req, res) => {
+        try {
+            console.log(req.body);
+            const updatedShop = await shopModel.findByIdAndUpdate(req.params.id, req.body)
+            console.log(updatedShop);
+            res.send(updatedShop)
+        } catch (error) {
+            res.status(404).send({message: error.message})
+        }
     }
 }
 

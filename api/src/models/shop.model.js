@@ -7,6 +7,7 @@ const shopSchema = new mongoose.Schema({
     },
     imageUrl: {
         type: String,
+        required: true
     },
     posts: [
         {

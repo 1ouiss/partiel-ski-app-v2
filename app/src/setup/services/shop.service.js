@@ -12,9 +12,15 @@ const getOneShopById = async (id) => {
     return response.data;
 }
 
+const updateShop = async (id, shop) => {
+    const response = await instance.put(`${endPoint}/${id}`, shop)
+    return response.data;
+}
+
 const shopService = {
     getAllShops,
-    getOneShopById
+    getOneShopById,
+    updateShop
 }
 
 export default shopService;

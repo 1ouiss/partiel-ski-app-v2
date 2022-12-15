@@ -8,6 +8,8 @@ import Shop from './app/pages/Shop';
 import ShopDetails from './app/pages/ShopDetails';
 import ShopConnect from './app/pages/ShopConnect';
 import PostForm from './app/pages/PostForm';
+import UpdateShop from './app/pages/UpdateShop';
+
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -37,6 +39,7 @@ function App() {
           <Route path='/shop/:id/details' element={<ShopDetails/>}/>
           <Route path='/createpost/:shopId' element={<PostForm/>}/>
           <Route path='/editpost/:postId' element={<PostForm/>}/>
+          <Route path='/updateshop/:id' element={<UpdateShop/>}/>
         </Routes>
       </MainLayout>
     </BrowserRouter>

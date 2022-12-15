@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import postService from "../../setup/services/post.service";
 import FormComment from "../components/FormComment";
 import FormBooking from "../components/FormBooking";
-import { Button, Typography } from "@mui/material";
+import { Button, Typography, Box } from "@mui/material";
+import shopFunctions from "../functions/shop.functions";
 
 
 const DetailPost = () => {
@@ -13,8 +14,7 @@ const DetailPost = () => {
     const [noteMoyenne, setNoteMoyenne] = useState(0)
 
     const [post, setPost] = useState({});
-
-
+    const [shop, setShop] = useState({});
 
     const fetchPost = async () => {
         try {
@@ -43,6 +43,7 @@ const DetailPost = () => {
 
     useEffect(() => {
         calculNoteMoyenne();
+        shopFunctions.fetchShop(post.shop, setShop);
     }, [post])
 
     return ( 
@@ -50,58 +51,79 @@ const DetailPost = () => {
             <Button onClick={()=> navigate('/')}>
                 Retour
             </Button>
-            <Typography variant="h5">Detail Post</Typography>
 
-            <FormComment id={id} fetchPost={fetchPost}/>
+            <Box>
+                <img src={post.imageUrl} alt="" />
+                <Box>
+                    <Typography variant="body2">
+                        Note Moyenne : &nbsp;
+                        {noteMoyenne === 1 && <span>⭐ ☆ ☆ ☆ ☆</span>}
+                        {noteMoyenne === 2 && <span>⭐ ⭐ ☆ ☆ ☆</span>}
+                        {noteMoyenne === 3 && <span>⭐ ⭐ ⭐ ☆ ☆</span>}
+                        {noteMoyenne === 4 && <span>⭐ ⭐ ⭐ ⭐ ☆</span>}
+                        {noteMoyenne === 5 && <span>⭐ ⭐ ⭐ ⭐ ⭐</span>}
+                    </Typography>
+                </Box>
+                <Typography variant="h4">
+                    {post.title}
+                </Typography>
+                <Typography variant="body1">
+                    {post.description}
+                </Typography>
+                <Typography variant="body1">
+                    {shop.name}
+                </Typography>
+                <Typography variant="body1">
+                    {shop.addresse}
+                </Typography>
+                <Typography variant="body1">
+                    {post.price} €
+                </Typography>
+                <Typography variant="body1">
+                    Taille : {post.size} cm
+                </Typography>
+                <Typography variant="body1">
+                    Style : {post.style}
+                </Typography>
+                <Typography variant="body1">
+                    Poids : {post.weight} kg
+                </Typography>
+            </Box>
 
             <FormBooking id={id} fetchPost={fetchPost} shop={post.shop}/>
 
-            <div>
-                {
-                    post && post.comments && post.comments.map((comment) => {
-                        return (
-                            <div key={comment._id}>
-                                <p>{comment.username}</p>
-                                <p>{comment.description}</p>
-                                {
-                                    comment.starts === 1 && <p>⭐ ☆ ☆ ☆ ☆</p>
-                                }
-                                {
-                                    comment.starts === 2 && <p>⭐ ⭐ ☆ ☆ ☆</p>
-                                }
-                                {
-                                    comment.starts === 3 && <p>⭐ ⭐ ⭐ ☆ ☆</p>
-                                }
-                                {
-                                    comment.starts === 4 && <p>⭐ ⭐ ⭐ ⭐ ☆</p>
-                                }
-                                {
-                                    comment.starts === 5 && <p>⭐ ⭐ ⭐ ⭐ ⭐</p>
-                                }
-                            </div>
+            <Box>
+                <FormComment id={id} fetchPost={fetchPost}/>
+                <Box>
+                    {
+                        post && post.comments && post.comments.map((comment) => {
+                            return (
+                                <Box key={comment._id}>
+                                    {
+                                        comment.starts === 1 && <Typography variant="body2">⭐ ☆ ☆ ☆ ☆</Typography>
+                                    }
+                                    {
+                                        comment.starts === 2 && <Typography variant="body2">⭐ ⭐ ☆ ☆ ☆</Typography>
+                                    }
+                                    {
+                                        comment.starts === 3 && <Typography variant="body2">⭐ ⭐ ⭐ ☆ ☆</Typography>
+                                    }
+                                    {
+                                        comment.starts === 4 && <Typography variant="body2">⭐ ⭐ ⭐ ⭐ ☆</Typography>
+                                    }
+                                    {
+                                        comment.starts === 5 && <Typography variant="body2">⭐ ⭐ ⭐ ⭐ ⭐</Typography>
+                                    }
+                                    <Typography variant="h6">{comment.username}</Typography>
+                                    <Typography variant="body1">{comment.description}</Typography>
+                                </Box>
+                            )
+                        }
                         )
                     }
-                    )
-                }
-            </div>
+                </Box>
+            </Box>
 
-            <div>
-                {
-                    noteMoyenne === 1 && <p>⭐ ☆ ☆ ☆ ☆</p>
-                }
-                {
-                    noteMoyenne === 2 && <p>⭐ ⭐ ☆ ☆ ☆</p>
-                }
-                {
-                    noteMoyenne === 3 && <p>⭐ ⭐ ⭐ ☆ ☆</p>
-                }
-                {
-                    noteMoyenne === 4 && <p>⭐ ⭐ ⭐ ⭐ ☆</p>
-                }
-                {
-                    noteMoyenne === 5 && <p>⭐ ⭐ ⭐ ⭐ ⭐</p>
-                }
-            </div>
         </>
     );
 }

@@ -1,5 +1,7 @@
+import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import shopService from "../../setup/services/shop.service";
+import { Link } from "react-router-dom";
 
 const Shop = () => {
     const [shops, setShops] = useState([]);
@@ -21,13 +23,13 @@ const Shop = () => {
     return (
         <>
             <h1>Select Shop</h1>
-            <ul>
+            <Box>
                 {shops.map((shop) => (
-                    <li key={shop._id}>
-                        <a href={`/shop/${shop._id}`}>{shop.name}</a>
-                    </li>
+                    <Typography key={shop._id}>
+                        <Link to={`/shop/${shop._id}`}>{shop.name}</Link>
+                    </Typography>
                 ))}
-            </ul>
+            </Box>
         </>
     );
 }

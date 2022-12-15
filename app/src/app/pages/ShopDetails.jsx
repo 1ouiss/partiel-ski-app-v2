@@ -1,12 +1,13 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import PostsOfShop from "../components/PostsOfShop";
 import shopFunctions from "../functions/shop.functions";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import BookingOfShop from "../components/BookingOfShop";
 
 const ShopDetails = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const [shop, setShop] = useState({});
     const [view, setView] = useState('posts');
@@ -18,9 +19,18 @@ const ShopDetails = () => {
 
     return (
         <>
-            <h1>Shop Details</h1>
-            <h2>{shop.name}</h2>
-            <p>{shop.addresse}</p>
+            <Box>
+                <Typography variant="h4">
+                    {shop.name}
+                </Typography>
+                <Typography variant="h6">
+                    {shop.description}
+                </Typography>
+                <Button onClick={() => navigate(`/updateshop/${id}`)}>
+                    Update shop
+                </Button>
+                <img src={shop.imageUrl} alt={shop.name} />
+            </Box>
 
             <Box sx={{display: 'flex', justifyContent: 'space-around'}}>
                 <Button onClick={() => setView('posts')}>
