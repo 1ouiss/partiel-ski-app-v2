@@ -1,16 +1,16 @@
+import { Box, Container } from "@mui/material";
 import Nav from "../components/Nav";
 
 const MainLayout = ({children}) => {
     return (
-        <>
-            <header>
-                <h1>My App</h1>
+        <Container maxWidth="lg">
+            <Box variant="header">
                 <Nav />
-            </header>
-            <section>
+            </Box>
+            <Box variant="section">
                 {children}
-            </section>
-        </>
+            </Box>
+        </Container>
     );
 }
  

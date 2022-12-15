@@ -1,8 +1,9 @@
 import { useState } from "react";
 import WeightFilter from "../components/WeightFilter";
 import StyleFilter from "../components/StyleFilter";
-import HeightFilter from "../components/HeightFilter";
+import SizeFilter from "../components/SizeFilter";
 import PostCard from "../components/PostCard";
+import { Box, Container, TextField } from "@mui/material";
 
 const PostList = ({posts}) => {
 
@@ -10,7 +11,7 @@ const PostList = ({posts}) => {
     const [isSearch, setIsSearch] = useState(false)
     const [weight, setWeight] = useState('')
     const [style, setStyle] = useState('')
-    const [height, setHeight] = useState('')
+    const [size, setSize] = useState('')
 
     const handleSearch = (e) => {
         const search = e.target.value;
@@ -46,9 +47,10 @@ const PostList = ({posts}) => {
         setPostsSearch(filteredPosts);
         setIsSearch(true);
     }
-    const handleChangeHeight = (height) => {
-        setHeight(height);
-        const filteredPosts = posts.filter(post => post.height === height)
+
+    const handleChangeSize = (size) => {
+        setSize(size);
+        const filteredPosts = posts.filter(post => post.size === size)
         setPostsSearch(filteredPosts);
         setIsSearch(true);
     }
@@ -56,16 +58,15 @@ const PostList = ({posts}) => {
     
 
     return ( 
-        <div>
-            <h1>Post List</h1>
+        <>
 
-            <input type="text" onChange={(e) => handleSearch(e)} />
+            <TextField onChange={(e) => handleSearch(e)} id="outlined-basic" label="Recheche" variant="outlined" />
 
             <WeightFilter weight={weight} setWeight={handleChangeWeight}/>
             <StyleFilter style={style} setStyle={handleChangeStyle}/>
-            <HeightFilter height={height} setHeight={handleChangeHeight}/>
+            <SizeFilter height={size} setHeight={handleChangeSize}/>
 
-            <div>
+            <Box>
                 {
                     isSearch ? postsSearch.map(post => (
                         <PostCard post={post}/>
@@ -74,8 +75,8 @@ const PostList = ({posts}) => {
                         <PostCard post={post}/>
                     ))
                 }
-            </div>
-        </div>
+            </Box>
+        </>
     );
 }
  

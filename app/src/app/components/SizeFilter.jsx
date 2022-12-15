@@ -1,17 +1,17 @@
 import {Select, MenuItem, InputLabel, FormControl} from '@mui/material';
 
-const HeightFilter = ({height, setHeight}) => {
+const SizeFilter = ({size, setSize}) => {
     return (
         <FormControl sx={{
             width: "200px"
         }}>
-            <InputLabel id="demo-simple-select-label">Style</InputLabel>
+            <InputLabel id="demo-simple-select-label">Size</InputLabel>
             <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                label="Style"
-                value={height}
-                onChange={(e) => setHeight(e.target.value)}
+                label="Size"
+                value={size}
+                onChange={(e) => setSize(e.target.value)}
             >
                 <MenuItem value={140}>140cm</MenuItem>
                 <MenuItem value={145}>145cm</MenuItem>
@@ -24,10 +24,9 @@ const HeightFilter = ({height, setHeight}) => {
                 <MenuItem value={180}>180cm</MenuItem>
                 <MenuItem value={185}>185cm</MenuItem>
                 <MenuItem value={190}>190cm</MenuItem>
-
             </Select>
         </FormControl>
     );
 }
  
-export default HeightFilter;
+export default SizeFilter;
