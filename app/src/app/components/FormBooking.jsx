@@ -14,6 +14,7 @@ const FormBooking = ({id, fetchPost, shop}) => {
     }
 
     const handleBooking = async (e) => {
+        console.log(shop);
         booking.post = id
         booking.shop = shop
         try {

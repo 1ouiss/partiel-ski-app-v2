@@ -1,5 +1,6 @@
 const bookingModel = require('../models/booking.model');
 const postModel = require('../models/post.model');
+const shopModel = require('../models/shop.model');
 
 const bookingController = {
     getAllBookings: async (req, res) => {
@@ -22,6 +23,7 @@ const bookingController = {
         try {
             const newBooking = new bookingModel(req.body);
             await newBooking.save();
+            console.log(newBooking._id);
             //push booking in post
             const post = await postModel.findById(newBooking.post)
             post.bookings.push(newBooking._id)
