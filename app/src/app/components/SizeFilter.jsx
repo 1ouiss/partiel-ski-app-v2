@@ -10,8 +10,9 @@ const SizeFilter = ({size, setSize}) => {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 label="Size"
+                name='size'
                 value={size}
-                onChange={(e) => setSize(e.target.value)}
+                onChange={(e) => setSize(e)}
             >
                 <MenuItem value={140}>140cm</MenuItem>
                 <MenuItem value={145}>145cm</MenuItem>
@@ -24,6 +25,7 @@ const SizeFilter = ({size, setSize}) => {
                 <MenuItem value={180}>180cm</MenuItem>
                 <MenuItem value={185}>185cm</MenuItem>
                 <MenuItem value={190}>190cm</MenuItem>
+                <MenuItem value={195}>195cm</MenuItem>
             </Select>
         </FormControl>
     );

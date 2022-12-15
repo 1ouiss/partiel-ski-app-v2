@@ -27,7 +27,8 @@ const PostList = ({posts}) => {
     }
 
     const handleChangeWeight = (e) => {
-        setWeight(e.target.value);
+        const weight = e.target.value;
+        setWeight(weight);
         if (weight === 45) {
             const filteredPosts = posts.filter(post => post.weight <= 45)
             setPostsSearch(filteredPosts);
@@ -42,14 +43,18 @@ const PostList = ({posts}) => {
     }
 
     const handleChangeStyle = (e) => {
-        setStyle(e.target.value);
+        const style = e.target.value;
+        setStyle(style);
         const filteredPosts = posts.filter(post => post.style === style)
         setPostsSearch(filteredPosts);
         setIsSearch(true);
     }
 
     const handleChangeSize = (e) => {
-        setSize(e.target.value);
+        const size = e.target.value
+        setSize(size);
+        console.log(e.target.value);
+        console.log(size);
         const filteredPosts = posts.filter(post => post.size === size)
         setPostsSearch(filteredPosts);
         setIsSearch(true);
@@ -64,7 +69,7 @@ const PostList = ({posts}) => {
 
             <WeightFilter weight={weight} setWeight={handleChangeWeight}/>
             <StyleFilter style={style} setStyle={handleChangeStyle}/>
-            <SizeFilter height={size} setHeight={handleChangeSize}/>
+            <SizeFilter size={size} setSize={handleChangeSize}/>
 
             <Box>
                 {

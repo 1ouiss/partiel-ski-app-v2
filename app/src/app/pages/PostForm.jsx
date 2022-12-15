@@ -75,9 +75,9 @@ const PostForm = () => {
         <>
             <Box component="form" onSubmit={(e)=> handleSubmit(e)}>
                 <TextField type="text" name="title" label="Titre du post" value={post?.title || ""} onChange={(e)=>handleChange(e)}/>
-                <TextField type="text" name="description" label="description du poste" value={post?.description || ""}/>
-                <TextField type="text" name="imageUrl" label="url de l'image" value={post?.imageUrl || ""}/>
-                <TextField type="text" name="price" label="prix" value={post?.price || ""}/>
+                <TextField type="text" name="description" label="description du poste" value={post?.description || ""} onChange={(e)=>handleChange(e)}/>
+                <TextField type="text" name="imageUrl" label="url de l'image" value={post?.imageUrl || ""} onChange={(e)=>handleChange(e)}/>
+                <TextField type="text" name="price" label="prix" value={post?.price || ""} onChange={(e)=>handleChange(e)}/>
                 <WeightFilter weight={post?.weight || ""} setWeight={handleChange}/>
                 <SizeFilter size={post?.size || ""} setSize={handleChange}/>
                 <StyleFilter style={post?.style || ""} setStyle={handleChange} />

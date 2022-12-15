@@ -22,10 +22,17 @@ const createPost = async (data) => {
     return response.data;
 }
 
+const editPost = async (id, data) => {
+    const response = await instance.put(`${endPoint}/${id}`, data)
+    return response.data;
+}
+
 const postService = {
     getPosts,
     getOnePostById,
-    deletePost
+    deletePost,
+    createPost,
+    editPost
 }
 
 export default postService;

@@ -24,7 +24,7 @@ const PostCard = ({post}) => {
     }, []);
 
     return (
-        <Card sx={{ display: 'flex', flexDirection: 'row', m:2}} onClick={()=> navigate(`/${post._id}`)}>
+        <Card sx={{ display: 'flex', flexDirection: 'row', m:2}} onClick={()=> navigate(`/${post._id}`)} key={post._id}>
             <CardMedia
             component="img"
             height="140"

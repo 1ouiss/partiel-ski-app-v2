@@ -10,8 +10,9 @@ const StyleFilter = ({style, setStyle}) => {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 label="Style"
+                name='style'
                 value={style}
-                onChange={(e) => setStyle(e.target.value)}
+                onChange={(e) => setStyle(e)}
             >
                 <MenuItem value={"Freeride"}>Freeride</MenuItem>
                 <MenuItem value={"Freestyle"}>Freestyle</MenuItem>
