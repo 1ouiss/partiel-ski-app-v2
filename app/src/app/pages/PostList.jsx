@@ -3,7 +3,7 @@ import WeightFilter from "../components/WeightFilter";
 import StyleFilter from "../components/StyleFilter";
 import SizeFilter from "../components/SizeFilter";
 import PostCard from "../components/PostCard";
-import { Box, Container, TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 
 const PostList = ({posts}) => {
 

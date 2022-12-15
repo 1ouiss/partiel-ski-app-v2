@@ -1,7 +1,6 @@
-import { useEffect } from "react";
 import postService from "../../setup/services/post.service";
 import { useNavigate } from "react-router-dom";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button} from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Typography} from '@mui/material';
 import { Box } from "@mui/system";
 
 const PostsOfShop = ({posts, idShop}) => {
@@ -30,9 +29,15 @@ const PostsOfShop = ({posts, idShop}) => {
 
     return (
         <Box sx={{marginTop: 5}}>
-            <Button onClick={() => handleCreate(idShop)} variant="contained">
-                Create Post
-            </Button>
+            <Box sx={{display: "flex", justifyContent: "space-between", m: 2}}>
+                <Typography variant="h6">
+                    Posts
+                </Typography>
+                <Button onClick={() => handleCreate(idShop)} variant="contained">
+                    Create Post
+                </Button>
+            </Box>
+
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="caption table">
                     <TableHead>

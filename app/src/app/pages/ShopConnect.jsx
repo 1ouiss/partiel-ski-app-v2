@@ -1,6 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import shopService from "../../setup/services/shop.service";
 import shopFunctions from "../functions/shop.functions";
 
 const ShopConnect = () => {

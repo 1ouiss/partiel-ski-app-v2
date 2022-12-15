@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import PostsOfShop from "../components/PostsOfShop";
 import shopFunctions from "../functions/shop.functions";
 import { Box, Button } from "@mui/material";
-import bookingService from "../../setup/services/booking.service";
+import BookingOfShop from "../components/BookingOfShop";
 
 const ShopDetails = () => {
     const { id } = useParams();
@@ -39,7 +39,7 @@ const ShopDetails = () => {
                     )
                 : 
                     (
-                        <h1>yoooo</h1>
+                        <BookingOfShop shop={shop} idShop={id}/>
                     )
             }
 
