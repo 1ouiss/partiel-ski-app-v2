@@ -1,14 +1,12 @@
 import { useEffect } from "react";
 import postService from "../../setup/services/post.service";
 import { useNavigate } from "react-router-dom";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button} from '@mui/material';
+import { Box } from "@mui/system";
 
 const PostsOfShop = ({posts, idShop}) => {
 
     const navigate = useNavigate();
-    
-    useEffect(() => {
-        console.log(posts);
-    }, [])
 
     const handleDelete = async (id) => {
         try {
@@ -31,25 +29,50 @@ const PostsOfShop = ({posts, idShop}) => {
     }
 
     return (
-        <div>
-            <h1>Posts of shop</h1>
-            <button onClick={() => handleCreate(idShop)}>
-                CreatePost
-            </button>
-            <button onClick={() => handleEdit(idShop)}>
-                EditPost
-            </button>
-            <ul>
-                {posts && posts.map((post) => (
-                    <li key={post._id}>
-                        {post.title}
-                        <button onClick={() => handleDelete(post._id)}>
-                            Delete
-                        </button>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <Box sx={{marginTop: 5}}>
+            <Button onClick={() => handleCreate(idShop)} variant="contained">
+                Create Post
+            </Button>
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="caption table">
+                    <TableHead>
+                    <TableRow>
+                        <TableCell>ID</TableCell>
+                        <TableCell>Titre</TableCell>
+                        <TableCell align="right">Prix</TableCell>
+                        <TableCell align="right">Taille</TableCell>
+                        <TableCell align="right">Style</TableCell>
+                        <TableCell align="right">Poids</TableCell>
+                        <TableCell align="right">Actions</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    {posts && posts.map((post) => (
+                        <TableRow key={post._id}>
+                            <TableCell>
+                                {post._id}
+                            </TableCell>
+                            <TableCell component="th" scope="row">
+                                {post.title}
+                            </TableCell>
+                            <TableCell align="right">{post.price}</TableCell>
+                            <TableCell align="right">{post.size}</TableCell>
+                            <TableCell align="right">{post.style}</TableCell>
+                            <TableCell align="right">{post.weight}</TableCell>
+                            <TableCell align="right">
+                                <Button color="primary" variant="contained" onClick={()=> handleEdit(post._id)}>
+                                    Edit
+                                </Button>
+                                <Button color="error" variant="contained" onClick={()=> handleDelete(post._id)}>
+                                    Delete
+                                </Button>
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </Box>
     );
 }
  

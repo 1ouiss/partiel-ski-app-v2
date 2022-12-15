@@ -11,7 +11,11 @@ const bookingSchema = new mongoose.Schema({
     post: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Post"
-    }
+    },
+    shop: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Shop"
+    },
 });
 
 const Booking = mongoose.model("Booking", bookingSchema);

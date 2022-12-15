@@ -14,6 +14,12 @@ const shopSchema = new mongoose.Schema({
             ref: "Post"
         }
     ],
+    bookings: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Booking"
+        }
+    ],
     createdAt: {
         type: Date,
         default: Date.now

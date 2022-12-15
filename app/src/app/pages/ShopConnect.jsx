@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import shopService from "../../setup/services/shop.service";
+import shopFunctions from "../functions/shop.functions";
 
 const ShopConnect = () => {
     const { id } = useParams();
@@ -9,18 +10,8 @@ const ShopConnect = () => {
     const [password, setPassword] = useState('')
     const navigate = useNavigate();
 
-    const fetchShop = async () => {
-        try {
-            const response = await shopService.getOneShopById(id);
-            console.log(response);
-            setShop(response);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
     useEffect(() => {
-        fetchShop();
+        shopFunctions.fetchShop(id, setShop);
     }, []);
 
     const handleSubmit = (e) => {
@@ -30,6 +21,7 @@ const ShopConnect = () => {
             navigate(`/shop/${id}/details`);
         }
     }
+
     return (
         <>
             <h2>Connect to see the shop details</h2>

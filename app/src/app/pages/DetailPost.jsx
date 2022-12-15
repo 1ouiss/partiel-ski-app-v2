@@ -36,7 +36,7 @@ const DetailPost = () => {
 
             <FormComment id={id} fetchPost={fetchPost}/>
 
-            <FormBooking id={id} fetchPost={fetchPost}/>
+            <FormBooking id={id} fetchPost={fetchPost} shop={post.shop}/>
 
         </div>
     );

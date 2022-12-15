@@ -22,10 +22,15 @@ const bookingController = {
         try {
             const newBooking = new bookingModel(req.body);
             await newBooking.save();
+            //push booking in post
             const post = await postModel.findById(newBooking.post)
             post.bookings.push(newBooking._id)
             post.isAvailable = false
             await post.save()
+            //push booking in shop
+            const shop = await shopModel.findById(newBooking.shop)
+            shop.bookings.push(newBooking._id)
+            await shop.save()
             res.send(newBooking);
         } catch (error) {
             res.status(400).send({message: error.message})

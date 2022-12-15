@@ -1,33 +1,49 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import shopService from "../../setup/services/shop.service";
 import PostsOfShop from "../components/PostsOfShop";
-
+import shopFunctions from "../functions/shop.functions";
+import { Box, Button } from "@mui/material";
+import bookingService from "../../setup/services/booking.service";
 
 const ShopDetails = () => {
     const { id } = useParams();
 
     const [shop, setShop] = useState({});
-
-    const fetchShop = async () => {
-        try {
-            const response = await shopService.getOneShopById(id);
-            console.log(response);
-            setShop(response);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    const [view, setView] = useState('posts');
 
     useEffect(() => {
-        fetchShop();
+        shopFunctions.fetchShop(id, setShop);
     }, []);
+
 
     return (
         <>
             <h1>Shop Details</h1>
-            <p>Shop ID: {id}</p>
-            <PostsOfShop posts={shop.posts} idShop={id}/>
+            <h2>{shop.name}</h2>
+            <p>{shop.addresse}</p>
+
+            <Box sx={{display: 'flex', justifyContent: 'space-around'}}>
+                <Button onClick={() => setView('posts')}>
+                    View Posts
+                </Button>
+                <Button onClick={() => setView('bookings')}>
+                    View Booking
+                </Button>
+            </Box>
+
+
+            {
+                view === 'posts' ?
+                    (
+                        <PostsOfShop posts={shop.posts} idShop={id}/>
+                    )
+                : 
+                    (
+                        <h1>yoooo</h1>
+                    )
+            }
+
+            {/* <PostsOfShop posts={shop.posts} idShop={id}/> */}
         </>
     );
 }

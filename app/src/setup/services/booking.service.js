@@ -7,8 +7,14 @@ const createBooking = async (booking) => {
     return response.data;
 }
 
+const getOneById = async (id) => {
+    const response = await instance.get(`${endPoint}/${id}`);
+    return response.data;
+}
+
 const bookingService = {
-    createBooking
+    createBooking,
+    getOneById,
 }
 
 export default bookingService;

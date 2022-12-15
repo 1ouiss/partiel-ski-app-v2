@@ -1,7 +1,7 @@
 import { useState } from "react";
 import bookingService from "../../setup/services/booking.service";
 
-const FormBooking = ({id, fetchPost}) => {
+const FormBooking = ({id, fetchPost, shop}) => {
 
     const [booking, setBooking] = useState({});
 
@@ -15,6 +15,7 @@ const FormBooking = ({id, fetchPost}) => {
 
     const handleBooking = async (e) => {
         booking.post = id
+        booking.shop = shop
         try {
             const response = await bookingService.createBooking(booking);
             console.log(response);

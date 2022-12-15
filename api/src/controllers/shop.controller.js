@@ -3,7 +3,7 @@ const shopModel = require('../models/shop.model')
 const shopController = {
     getAllShops: async (req, res) => {
         try {
-            const shops = await shopModel.find().populate("posts")
+            const shops = await shopModel.find().populate("posts").populate('bookings')
             res.send(shops)
         } catch (error) {
             res.status(404).send({message: error.message})
@@ -11,7 +11,7 @@ const shopController = {
     },
     getShopById: async (req, res) => {
         try {
-            const shop = await shopModel.findById(req.params.id).populate('posts')
+            const shop = await shopModel.findById(req.params.id).populate('posts').populate('bookings')
             res.send(shop)
         } catch (error) {
             res.status(404).send({message: error.message})
