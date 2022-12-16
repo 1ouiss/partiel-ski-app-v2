@@ -49,7 +49,7 @@ const ShopDetails = () => {
                     )
                 : 
                     (
-                        <BookingOfShop shop={shop} idShop={id}/>
+                        <BookingOfShop shop={shop} setShop={setShop} idShop={id} fetchShop={shopFunctions.fetchShop}/>
                     )
             }
         </>

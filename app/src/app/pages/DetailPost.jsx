@@ -33,7 +33,7 @@ const DetailPost = () => {
             note += comment.starts
             nb += 1
         })
-        let moyenne = note/nb
+        let moyenne = Math.round(note/nb)
         setNoteMoyenne(moyenne)
     }
 

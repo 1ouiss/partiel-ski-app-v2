@@ -11,7 +11,6 @@ const fetchShop = async (id, setShop) => {
 
 const shopFunctions = {
     fetchShop,
-
 }
 
 export default shopFunctions;

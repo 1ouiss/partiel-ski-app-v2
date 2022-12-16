@@ -12,9 +12,15 @@ const getOneById = async (id) => {
     return response.data;
 }
 
+const deleteBooking = async (id) => {
+    const response = await instance.delete(`${endPoint}/${id}`);
+    return response.data;
+}
+
 const bookingService = {
     createBooking,
     getOneById,
+    deleteBooking
 }
 
 export default bookingService;

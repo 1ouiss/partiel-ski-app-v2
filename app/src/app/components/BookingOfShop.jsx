@@ -1,10 +1,19 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Box, Typography} from '@mui/material';
+import bookingService from '../services/booking.service';
+import shopFunctions from '../functions/shop.functions';
 
-const BookingOfShop = ({shop}) => {
+const BookingOfShop = ({shop, setShop, idShop, fetchShop}) => {
 
     const handleDelete = async (id) => {
-        console.log(id);
+        try {
+            const response = await bookingService.deleteBooking(id);
+            console.log(response);
+            fetchShop(idShop, setShop);
+        } catch (error) {
+            console.log(error);
+        }
     }
+
     return (
         <Box sx={{marginTop: 5}}>
             <Typography variant="h6">
