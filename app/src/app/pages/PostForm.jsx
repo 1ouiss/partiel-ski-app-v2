@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import WeightFilter from "../components/WeightFilter";
 import { Box, Button, TextField } from "@mui/material";
 import SizeFilter from "../components/SizeFilter";
@@ -11,6 +11,7 @@ const PostForm = () => {
     const {postId, shopId} = useParams();
 
     const [post, setPost] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.log("post id : ",postId);
@@ -45,6 +46,7 @@ const PostForm = () => {
         try {
             const response = await postService.editPost(postId, post);
             console.log(response);
+            navigate(`/shop/${post.shop}/details`);
         } catch (error) {
             console.log(error);
         }
@@ -56,6 +58,7 @@ const PostForm = () => {
         try {
             const response = await postService.createPost(post);
             console.log(response);
+            navigate(`/shop/${shopId}/details`);
         } catch (error) {
             console.log(error);
         }

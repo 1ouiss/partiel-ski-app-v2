@@ -1,5 +1,5 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Box, Typography} from '@mui/material';
-import bookingService from '../services/booking.service';
+import bookingService from '../../setup/services/booking.service';
 import shopFunctions from '../functions/shop.functions';
 
 const BookingOfShop = ({shop, setShop, idShop, fetchShop}) => {
